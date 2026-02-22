@@ -15,7 +15,7 @@ def gh_api_request(method, url, token, data=None):
         try:
             body = e.read().decode('utf-8')
             return {'_error': True, 'status': e.code, 'body': body}
-        except:
+        except Exception:
             return {'_error': True, 'status': e.code, 'body': ''}
 
 def upload_file(token, owner, repo, local_path, rel_path, branch='main'):
@@ -51,6 +51,14 @@ def gather_files(root):
             if fname.endswith(('.pyc','.pyo')):
                 continue
             full = os.path.join(dirpath, fname)
+            # skip large binaries and DB files
+            try:
+                if os.path.getsize(full) > 1_000_000:
+                    continue
+            except OSError:
+                continue
+            if full.lower().endswith('.db'):
+                continue
             rel = os.path.relpath(full, root).replace('\\','/')
             files.append((full, rel))
     return files
