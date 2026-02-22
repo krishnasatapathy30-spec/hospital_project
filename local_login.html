@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Local Login — Hospital Project</title>
+    <style>
+      :root{--primary:#0d6efd}
+      body{font-family:Inter,system-ui,Arial;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(120deg,#fbfdff 0%,#eef6ff 100%)}
+      .box{width:420px;padding:28px;border-radius:14px;background:#fff;box-shadow:0 12px 30px rgba(15,30,60,0.08)}
+      h2{margin:0 0 6px 0}
+      label{display:block;margin-top:12px;font-size:0.9rem;color:#374151}
+      input{width:100%;padding:10px;margin-top:8px;border:1px solid #e6eef9;border-radius:10px}
+      button{margin-top:18px;padding:10px 14px;background:var(--primary);color:#fff;border:none;border-radius:10px;cursor:pointer;width:100%}
+      .hint{font-size:13px;color:#6b7280;margin-top:10px}
+      .cta{font-size:13px;color:#0b5ed7;text-decoration:none}
+      pre{background:#f3f7ff;padding:8px;border-radius:6px;overflow:auto}
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <h2>Quick Local Login</h2>
+      <p class="hint">This small form posts to your local server at <strong>127.0.0.1:5000</strong>.</p>
+      <form method="post" action="http://127.0.0.1:5000/login">
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" value="admin" required autocomplete="username" />
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" value="password" required autocomplete="current-password" />
+        <button type="submit">Login</button>
+      </form>
+      <p class="hint">Need to start the server first? Use these commands:</p>
+      <pre style="margin:6px 0">E:\Hospital_project\venv\Scripts\Activate.ps1
+E:\Hospital_project\venv\Scripts\python.exe E:\Hospital_project\app.py</pre>
+      <p class="hint small-note">Tip: open <a class="cta" href="http://127.0.0.1:5000/login">127.0.0.1:5000/login</a> in your browser once the server is running.</p>
+    </div>
+  </body>
+</html>
